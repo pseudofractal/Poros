@@ -1,0 +1,10 @@
+/home/pseudofractal/GitHub/poros/target/debug/deps/libgloo_console-cc285bd7e296ed8d.rmeta: /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/lib.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/console_dbg.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/counter.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/externs.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/macros.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/timer.rs
+
+/home/pseudofractal/GitHub/poros/target/debug/deps/gloo_console-cc285bd7e296ed8d.d: /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/lib.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/console_dbg.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/counter.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/externs.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/macros.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/timer.rs
+
+/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/lib.rs:
+/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/console_dbg.rs:
+/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/counter.rs:
+/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/externs.rs:
+/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/macros.rs:
+/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/gloo-console-0.3.0/src/timer.rs:
