@@ -10,7 +10,7 @@ Poros is a work-in-progress client-side search redirector written in Rust using 
 
 ## What it does
 
-Poros allows users to define custom search prefixes (or "bangs") like `!yt` for YouTube or `!g` for Google, and redirects search queries accordingly — entirely on the client side. It's designed to run fast, require no backend, and be easily deployable via GitHub Pages.
+Poros allows users to define custom search prefixes (or "bangs") like `!yt` for YouTube or `!g` for Google, and redirects search queries accordingly entirely on the client side. It's designed to run fast, require no backend, and be easily deployable via GitHub Pages.
 
 ---
 

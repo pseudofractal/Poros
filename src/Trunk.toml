@@ -1,5 +1,8 @@
 [build]
 target = "wasm32-unknown-unknown"
+dist = "dist"
+public_url = "/poros"
 
-[serve]
-open = true
+[[copy]]
+source = "../static"
+dest = "static"
