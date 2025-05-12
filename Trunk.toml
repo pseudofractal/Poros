@@ -1,8 +1,8 @@
 [build]
-target = "wasm32-unknown-unknown"
+target = "index.html"
 dist = "dist"
 public_url = "/poros"
 
 [[copy]]
-source = "../static"
+source = "static"
 dest = "static"

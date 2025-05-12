@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 use wasm_bindgen::JsValue;
 use std::collections::HashMap;
 use wasm_bindgen_futures::spawn_local;
-use web_sys::HtmlInputElement;
+use web_sys::{console, HtmlInputElement};
 use yew::prelude::*;
 
 #[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
@@ -27,6 +27,7 @@ fn build_index(bangs: &[Bang]) -> HashMap<String, Bang> {
 }
 
 fn handle_query(input: &str, index: &HashMap<String, Bang>) -> Result<(), JsValue> {
+    console::log_1(&JsValue::from_str(&format!("Handling query: {}", input)));
     let trimmed = input.trim();
     let (tag, search) = if trimmed.starts_with(BANG_PREFIX) {
         if let Some((t, s)) = trimmed.split_once(' ') {
@@ -51,7 +52,7 @@ fn app() -> Html {
         let bang_index = bang_index.clone();
         use_effect_with((), move |_| {
             spawn_local(async move {
-                if let Ok(resp) = Request::get("/static/bangs.json").send().await {
+                if let Ok(resp) = Request::get("/poros/static/bangs.json").send().await {
                     if let Ok(text) = resp.text().await {
                         if let Ok(parsed) = serde_json::from_str::<Vec<Bang>>(&text) {
                             let idx = build_index(&parsed);
@@ -87,17 +88,17 @@ fn app() -> Html {
         let bang_index = bang_index.clone();
         Callback::from(move |e: SubmitEvent| {
             e.prevent_default();
-            let input = (*query).clone();
-            if !bang_index.is_empty() {
+            let input = (*query).trim().to_string();
+            if !bang_index.is_empty() && !input.is_empty() {
                 let _ = handle_query(&input, &bang_index);
             }
-            query.set("".to_string());
         })
     };
 
+
     html! {
-        <div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
-            <h1>{"Poros"}</h1>
+        <div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center; background-color:#1e1e2e;">
+            <h1 style="color:#f9e2af;font-size:5em">{"Poros"}</h1>
             <form {onsubmit}>
                 <label for="search_input" style="display:none;">{"Search"}</label>
                 <input
@@ -106,7 +107,7 @@ fn app() -> Html {
                     placeholder="Search with !bang"
                     value={(*query).clone()}
                     {oninput}
-                    style="padding:0.5rem 1rem;font-size:1.2rem;width:20rem;border:1px solid #ccc;border-radius:8px;"
+                    style="padding:0.5rem 1rem;font-size:1.2rem;width:20rem;border:5px solid #b4befe;border-radius:10px;"
                 />
             </form>
         </div>
