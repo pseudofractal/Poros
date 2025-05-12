@@ -1,7 +1,7 @@
 [build]
 target = "index.html"
 dist = "dist"
-public_url = "/poros"
+public_url = "/Poros"
 
 [[copy]]
 source = "static"

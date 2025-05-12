@@ -52,7 +52,7 @@ fn app() -> Html {
         let bang_index = bang_index.clone();
         use_effect_with((), move |_| {
             spawn_local(async move {
-                if let Ok(resp) = Request::get("/poros/static/bangs.json").send().await {
+                if let Ok(resp) = Request::get("/Poros/static/bangs.json").send().await {
                     if let Ok(text) = resp.text().await {
                         if let Ok(parsed) = serde_json::from_str::<Vec<Bang>>(&text) {
                             let idx = build_index(&parsed);
