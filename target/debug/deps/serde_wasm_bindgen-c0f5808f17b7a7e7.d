@@ -1,9 +1,0 @@
-/home/pseudofractal/GitHub/poros/target/debug/deps/libserde_wasm_bindgen-c0f5808f17b7a7e7.rmeta: /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/lib.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/de.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/error.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/ser.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/../README.md
-
-/home/pseudofractal/GitHub/poros/target/debug/deps/serde_wasm_bindgen-c0f5808f17b7a7e7.d: /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/lib.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/de.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/error.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/ser.rs /home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/../README.md
-
-/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/lib.rs:
-/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/de.rs:
-/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/error.rs:
-/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/ser.rs:
-/home/pseudofractal/.cargo/registry/src/index.crates.io-6f17d22bba15001f/serde-wasm-bindgen-0.6.5/src/../README.md:
