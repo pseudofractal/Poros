@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Poros</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+  <link rel="modulepreload" href="/poros/poros-9596a1ef251ec2a9.js" crossorigin="anonymous" integrity="sha384-MlaqgAbJW8WzIxv93h+8ezfm6RNdl2QXjB1C5wHxBOpI08XMOl5cg+M6s7DW4J4l"><link rel="preload" href="/poros/poros-9596a1ef251ec2a9_bg.wasm" crossorigin="anonymous" integrity="sha384-JRJjhA8d6sqFqh7BEQEy8RYSczd2GeghlXeUKgaWDIHw/pMeVGz7G3Zxrqpl3iOx" as="fetch" type="application/wasm"></head>
+  <body>
+    <div id="app"></div>
+  
+<script type="module">
+import init, * as bindings from '/poros/poros-9596a1ef251ec2a9.js';
+const wasm = await init({ module_or_path: '/poros/poros-9596a1ef251ec2a9_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script></body>
+</html>
