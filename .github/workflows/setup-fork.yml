@@ -1,0 +1,48 @@
+name: Setup Fork
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write
+
+jobs:
+  update-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Update README Links
+        run: |
+          # Define variables
+          OLD_OWNER="pseudofractal"
+          NEW_OWNER="${{ github.repository_owner }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+          
+          # Normalize to lowercase for URLs
+          NEW_OWNER_LC=$(echo "$NEW_OWNER" | tr '[:upper:]' '[:lower:]')
+          REPO_NAME_LC=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
+          
+          # Only run if the owner is different
+          if [ "$NEW_OWNER" != "$OLD_OWNER" ]; then
+            echo "Fork detected. Updating links..."
+            
+            # Update the live demo link
+            # Matches pseudofractal.github.io/Poros and replaces with new-owner.github.io/new-repo
+            sed -i "s|pseudofractal.github.io/Poros|$NEW_OWNER_LC.github.io/$REPO_NAME_LC|g" README.md
+            
+            # Update the "Add 'Poros'..." link in Usage section
+            # Matches the raw HTTPS link text
+            sed -i "s|https://pseudofractal.github.io/Poros/|https://$NEW_OWNER_LC.github.io/$REPO_NAME_LC/|g" README.md
+
+            # Commit changes
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            
+            if [[ -n $(git status -s) ]]; then
+              git add README.md
+              git commit -m "docs: personalize links for fork owner"
+              git push
+            fi
+          fi

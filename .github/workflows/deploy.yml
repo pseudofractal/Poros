@@ -1,0 +1,51 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Rust Toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown
+
+      - name: Cache Cargo & Trunk
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Install Trunk
+        # checks if trunk is already in the cached bin, if not, installs it
+        run: |
+          if ! command -v trunk &> /dev/null; then
+              cargo install --locked trunk
+          fi
+
+      - name: Build Release
+        # We dynamically set public-url to match the repository name.
+        # This overrides the hardcoded "/Poros" in Trunk.toml to ensure
+        # it works even if someone else forks the repo and renames it.
+        run: trunk build --release --public-url /${{ github.event.repository.name }}/
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages

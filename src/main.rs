@@ -1,124 +1,48 @@
-use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
-use wasm_bindgen::JsValue;
-use web_sys::{console, HtmlInputElement};
-use yew::prelude::*;
-
-#[derive(Debug, Clone, PartialEq, Deserialize, Serialize)]
-pub struct Bang {
-  pub name: String,
-  pub id: Vec<String>,
-  pub url: String,
-}
-
-const BANG_PREFIX: &str = "!";
-const DEFAULT_TAG: &str = "g";
-
-// Embed the JSON at compile time for instant access
-const BANGS_JSON: &str = include_str!("../static/bangs.json");
-
-fn build_index(bangs: &[Bang]) -> HashMap<String, Bang> {
-  let mut map = HashMap::new();
-  for bang in bangs {
-    for tag in &bang.id {
-      map.insert(tag.clone(), bang.clone());
-    }
-  }
-  map
-}
-
-fn handle_query(input: &str, index: &HashMap<String, Bang>) -> Result<(), JsValue> {
-  console::log_1(&JsValue::from_str(&format!("Handling query: {}", input)));
-  let trimmed = input.trim();
-  let (tag, search) = if trimmed.starts_with(BANG_PREFIX) {
-    if let Some((t, s)) = trimmed.split_once(' ') {
-      (&t[BANG_PREFIX.len()..], s)
-    } else {
-      (&trimmed[BANG_PREFIX.len()..], "")
-    }
-  } else {
-    (DEFAULT_TAG, trimmed)
-  };
-  let bang = index
-    .get(tag)
-    .unwrap_or_else(|| index.get(DEFAULT_TAG).unwrap());
-  let final_url = bang.url.replace("{{{s}}}", &urlencoding::encode(search));
-
-  // Redirect immediately
-  web_sys::window()
-    .ok_or("window missing")?
-    .location()
-    .set_href(&final_url)
-}
-
-#[function_component(App)]
-fn app() -> Html {
-  let bang_index = use_state(|| HashMap::<String, Bang>::new());
-  let query = use_state(|| "".to_string());
-
-  {
-    let bang_index = bang_index.clone();
-    use_effect_with((), move |_| {
-      // Synchronous loading (Instant)
-      let parsed: Vec<Bang> = serde_json::from_str(BANGS_JSON).expect("Invalid built-in JSON");
-      let idx = build_index(&parsed);
-      bang_index.set(idx.clone());
-
-      // Check URL query parameters immediately
-      if let Some(window) = web_sys::window() {
-        if let Ok(href) = window.location().href() {
-          if let Ok(url) = web_sys::Url::new(&href) {
-            if let Some(q) = url.search_params().get("query") {
-              let decoded = urlencoding::decode(&q).unwrap_or_default();
-              // If a query exists, redirect happens here.
-              // The user will barely see the UI.
-              let _ = handle_query(&decoded, &idx);
-            }
-          }
-        }
-      }
-      || ()
-    });
-  }
-
-  let oninput = {
-    let query = query.clone();
-    Callback::from(move |e: InputEvent| {
-      let input: HtmlInputElement = e.target_unchecked_into();
-      query.set(input.value());
-    })
-  };
-
-  let onsubmit = {
-    let query = query.clone();
-    let bang_index = bang_index.clone();
-    Callback::from(move |e: SubmitEvent| {
-      e.prevent_default();
-      let input = (*query).trim().to_string();
-      if !bang_index.is_empty() && !input.is_empty() {
-        let _ = handle_query(&input, &bang_index);
-      }
-    })
-  };
-
-  html! {
-      <div style="height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center; background-color:#1e1e2e;">
-          <h1 style="color:#f9e2af;font-size:5em">{"Poros"}</h1>
-          <form {onsubmit}>
-              <label for="search_input" style="display:none;">{"Search"}</label>
-              <input
-                  id="search_input"
-                  type="text"
-                  placeholder="Search with !bang"
-                  value={(*query).clone()}
-                  {oninput}
-                  style="padding:0.5rem 1rem;font-size:1.2rem;width:20rem;border:5px solid #b4befe;border-radius:10px;"
-              />
-          </form>
-      </div>
-  }
-}
+use poros::{logic, storage, ui};
 
 fn main() {
-  yew::Renderer::<App>::new().render();
+  std::panic::set_hook(Box::new(console_error_panic_hook::hook));
+
+  let window = web_sys::window().expect("Global window object missing");
+  let document = window
+    .document()
+    .expect("Document object missing on window");
+
+  // Fast Path: Query Parameter Redirect
+  if let Ok(current_href) = window.location().href() {
+    if let Ok(parsed_url) = web_sys::Url::new(&current_href) {
+      if let Some(query_string) = parsed_url.search_params().get("query") {
+        let decoded_query = urlencoding::decode(&query_string).unwrap_or_default();
+        if !decoded_query.is_empty() {
+          let bang_definitions = storage::load_bangs(&window);
+          logic::execute_redirect(&decoded_query, &bang_definitions, &window);
+          return;
+        }
+      }
+    }
+  }
+
+  ui::inject_global_styles(&document);
+  let body = document.body().expect("Document body missing");
+  let _ = body.set_attribute("style", "margin: 0; padding: 0; background-color: #1e1e2e;");
+  body.set_inner_html("");
+
+  let main_container = ui::create_element(
+        &document,
+        "div",
+        "min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #1e1e2e; font-family: sans-serif;",
+    );
+  body.append_child(&main_container).unwrap();
+
+  let is_settings_page = window
+    .location()
+    .search()
+    .unwrap_or_default()
+    .contains("settings");
+
+  if is_settings_page {
+    ui::settings::render(&window, &document, &main_container);
+  } else {
+    ui::home::render(&window, &document, &main_container);
+  }
 }
