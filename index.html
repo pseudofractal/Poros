@@ -1,17 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Poros</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="static/logo.svg" />
     
-  <link rel="modulepreload" href="/Poros/poros-3e73e59ce97bf1f8.js" crossorigin="anonymous" integrity="sha384-MlaqgAbJW8WzIxv93h+8ezfm6RNdl2QXjB1C5wHxBOpI08XMOl5cg+M6s7DW4J4l"><link rel="preload" href="/Poros/poros-3e73e59ce97bf1f8_bg.wasm" crossorigin="anonymous" integrity="sha384-oL7z8A14ozKwGlKZLtXUcRCbLJWnpEhI///7Zkh3hrHnNqirOpTCIfmO5tmiyfCk" as="fetch" type="application/wasm"></head>
+    <link
+      rel="search"
+      type="application/opensearchdescription+xml"
+      title="Poros"
+      href="static/opensearch.xml"
+    />
+  <link rel="modulepreload" href="/Poros/poros-31861fe096c9b28c.js" crossorigin="anonymous" integrity="sha384-oxiVz7Pv178vL/afAFb7ySxi+qShDC3P2e94c3fVL0P1EbL8UZwzQa5cB+naoJac"><link rel="preload" href="/Poros/poros-31861fe096c9b28c_bg.wasm" crossorigin="anonymous" integrity="sha384-tGMYTAiVYVCmvkefDJSbQoI5JFi+MB3LMWaHEym9FJwiYaUG8ANpKqiUz22VQvtB" as="fetch" type="application/wasm"></head>
   <body>
     <div id="app"></div>
   
 <script type="module">
-import init, * as bindings from '/Poros/poros-3e73e59ce97bf1f8.js';
-const wasm = await init({ module_or_path: '/Poros/poros-3e73e59ce97bf1f8_bg.wasm' });
+import init, * as bindings from '/Poros/poros-31861fe096c9b28c.js';
+const wasm = await init({ module_or_path: '/Poros/poros-31861fe096c9b28c_bg.wasm' });
 
 
 window.wasmBindings = bindings;
