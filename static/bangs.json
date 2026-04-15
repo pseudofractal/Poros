@@ -18,5 +18,125 @@
     "name": "DuckDuckGo",
     "id": ["ddg"],
     "url": "https://duckduckgo.com/?q={{{s}}}"
+  },
+  {
+    "name": "Google Translate",
+    "id": ["gt", "translate"],
+    "url": "https://translate.google.com/?sl=auto&tl=en&text={{{s}}}"
+  },
+  {
+    "name": "ChatGPT",
+    "id": ["gpt"],
+    "url": "https://chatgpt.com/?temporary-chat=true&q={{{s}}}"
+  },
+  {
+    "name": "Google Scholar",
+    "id": ["gs", "scholar"],
+    "url": "https://scholar.google.com/scholar?q={{{s}}}"
+  },
+  {
+    "name": "arXiv",
+    "id": ["arxiv"],
+    "url": "https://arxiv.org/search/?query={{{s}}}&searchtype=all"
+  },
+  {
+    "name": "Semantic Scholar",
+    "id": ["ss", "semantic"],
+    "url": "https://www.semanticscholar.org/search?q={{{s}}}"
+  },
+  {
+    "name": "ResearchGate",
+    "id": ["rg"],
+    "url": "https://www.researchgate.net/search?q={{{s}}}"
+  },
+  {
+    "name": "GitHub",
+    "id": ["gh", "github"],
+    "url": "https://github.com/search?q={{{s}}}"
+  },
+  {
+    "name": "Stack Overflow",
+    "id": ["so", "stack"],
+    "url": "https://stackoverflow.com/search?q={{{s}}}"
+  },
+  {
+    "name": "MDN Web Docs",
+    "id": ["mdn"],
+    "url": "https://developer.mozilla.org/search?q={{{s}}}"
+  },
+  {
+    "name": "WolframAlpha",
+    "id": ["wa", "wolfram"],
+    "url": "https://www.wolframalpha.com/input/?i={{{s}}}"
+  },
+  {
+    "name": "Internet Archive (Wayback)",
+    "id": ["wb", "wayback"],
+    "url": "https://web.archive.org/web/*/{{{s}}}"
+  },
+  {
+    "name": "DeepL Translate",
+    "id": ["deepl", "dl"],
+    "url": "https://www.deepl.com/translator#auto/en/{{{s}}}"
+  },
+  {
+    "name": "Reddit",
+    "id": ["r", "reddit"],
+    "url": "https://www.reddit.com/search/?q={{{s}}}"
+  },
+  {
+    "name": "Amazon",
+    "id": ["a", "amz"],
+    "url": "https://www.amazon.com/s?k={{{s}}}"
+  },
+  {
+    "name": "Google Maps",
+    "id": ["gm", "maps"],
+    "url": "https://www.google.com/maps/search/{{{s}}}"
+  },
+  {
+    "name": "ArchWiki",
+    "id": ["aw", "arch"],
+    "url": "https://wiki.archlinux.org/index.php?search={{{s}}}"
+  },
+  {
+    "name": "Arch User Repository (AUR)",
+    "id": ["aur"],
+    "url": "https://aur.archlinux.org/packages?K={{{s}}}"
+  },
+  {
+    "name": "NixOS Wiki",
+    "id": ["nw", "nixwiki"],
+    "url": "https://wiki.nixos.org/w/index.php?search={{{s}}}"
+  },
+  {
+    "name": "Nix Packages",
+    "id": ["np", "nixpkg"],
+    "url": "https://search.nixos.org/packages?channel=unstable&query={{{s}}}"
+  },
+  {
+    "name": "Nix Options",
+    "id": ["no", "nixopt"],
+    "url": "https://search.nixos.org/options?channel=unstable&query={{{s}}}"
+  },
+  {
+    "name": "Gentoo Wiki",
+    "id": ["gw", "gentoo"],
+    "url": "https://wiki.gentoo.org/index.php?search={{{s}}}"
+  },
+  {
+    "name": "Linux Man Pages",
+    "id": ["man"],
+    "url": "https://man.archlinux.org/search?q={{{s}}}"
+  },
+  {
+    "name": "ProtonDB",
+    "id": ["pdb", "proton"],
+    "url": "https://www.protondb.com/search?q={{{s}}}"
+  },
+  {
+    "name": "Repology",
+    "id": ["repo", "repology"],
+    "url": "https://repology.org/projects/?search={{{s}}}"
   }
 ]
