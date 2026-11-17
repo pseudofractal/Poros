@@ -55,3 +55,5 @@ The home page loads only `styles.css`; `settings.css` loads when settings open. 
 The benchmark uses `chromium` from `PATH`. Set `CHROMIUM_PATH` to use another Chromium executable, and `POROS_BENCH_SAMPLES` to change the default of seven samples per page. Browser startup and remote network latency are excluded; page timings measure the app itself over local loopback.
 
 For real-world measurements, deploy the build first, then run `npm run bench:production`. It opens the deployed benchmark harness in fresh Chromium profiles and captures the same page metrics over the public network. Set `POROS_PRODUCTION_URL` for a different deployment. Run `npm run bench:production:baseline` after the first deployment to save a separate production reference. The harness is copied to `dist/benchmarks/` as part of each build.
+
+The initial seven-sample public deployment baseline is saved in `benchmarks/production-baseline.json`.

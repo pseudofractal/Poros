@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-11-17T13:33:47.759Z",
+  "runtime": "v24.22.2",
+  "platform": "linux x64",
+  "cpu": "AMD Ryzen 9 5900HS with Radeon Graphics",
+  "chromium": "Chromium 157.0.8103.50",
+  "target": "https://pseudofractal.github.io/Poros/",
+  "productionMode": true,
+  "samplesPerPage": 7,
+  "browser": [
+    {
+      "scenario": "home",
+      "appReady": {
+        "median": 70,
+        "p95": 77.8,
+        "unit": "ms"
+      },
+      "firstPaint": {
+        "median": 59.1,
+        "p95": 68.4,
+        "unit": "ms"
+      },
+      "transferredBytes": {
+        "median": 5194,
+        "p95": 5194,
+        "unit": "bytes"
+      },
+      "resourceCount": 4,
+      "engineCardCount": 0,
+      "usedJsHeap": {
+        "median": 1346255,
+        "p95": 1346387,
+        "unit": "bytes"
+      }
+    },
+    {
+      "scenario": "settings",
+      "appReady": {
+        "median": 83,
+        "p95": 105.5,
+        "unit": "ms"
+      },
+      "firstPaint": {
+        "median": 36.4,
+        "p95": 39.4,
+        "unit": "ms"
+      },
+      "transferredBytes": {
+        "median": 15768,
+        "p95": 15768,
+        "unit": "bytes"
+      },
+      "resourceCount": 7,
+      "engineCardCount": 28,
+      "usedJsHeap": {
+        "median": 1476766,
+        "p95": 1476886,
+        "unit": "bytes"
+      }
+    }
+  ],
+  "resolver": []
+}
