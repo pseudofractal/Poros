@@ -1,30 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1e1e2e" />
     <title>Poros</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="static/logo.svg" />
-    
-    <link
-      rel="search"
-      type="application/opensearchdescription+xml"
-      title="Poros"
-      href="static/opensearch.xml"
-    />
-  <link rel="modulepreload" href="/Poros/poros-87d0c3add1c9dbab.js" crossorigin="anonymous" integrity="sha384-knGjGQrFm7DVydcUJkgiLtObgze7Is+dKXBhTYefSJYYNo2QjU3JwpMmRljFcNnk"><link rel="preload" href="/Poros/poros-87d0c3add1c9dbab_bg.wasm" crossorigin="anonymous" integrity="sha384-fk1FTTh9eaLZDgjEhqPs9kJHLqwLktW2ygohGdPsCF/uWejdY9WqYGFBI6JZTxGP" as="fetch" type="application/wasm"></head>
+    <link rel="icon" type="image/svg+xml" href="./static/logo.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Poros" href="./static/opensearch.xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./assets/main.js"></script>
+  </head>
   <body>
-    <div id="app"></div>
-  
-<script type="module">
-import init, * as bindings from '/Poros/poros-87d0c3add1c9dbab.js';
-const wasm = await init({ module_or_path: '/Poros/poros-87d0c3add1c9dbab_bg.wasm' });
-
-
-window.wasmBindings = bindings;
-
-
-dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
-
-</script></body>
+    <main id="app" class="app-shell" aria-live="polite"></main>
+  </body>
 </html>

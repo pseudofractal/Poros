@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Poros benchmark harness</title>
+  </head>
+  <body>
+    <iframe id="app-frame" title="Poros app"></iframe>
+    <pre id="benchmark-result">pending</pre>
+    <script type="module">
+      const scenario = new URLSearchParams(location.search).get("scenario") ?? "home";
+      const appFrame = document.querySelector("#app-frame");
+      const output = document.querySelector("#benchmark-result");
+      const appBase = new URL("../", location.href);
+      appFrame.src = scenario === "settings" ? new URL("?settings", appBase) : appBase;
+      await new Promise((resolve) => {
+        appFrame.addEventListener("load", resolve, { once: true });
+      });
+      const appWindow = appFrame.contentWindow;
+      const appDocument = appFrame.contentDocument;
+      const appIsRendered = () => scenario === "settings"
+        ? appDocument.querySelector(".settings")
+        : appDocument.querySelector(".home-card");
+      await new Promise((resolve) => {
+        const startedAt = performance.now();
+        const waitForRender = () => {
+          if (!appIsRendered()) {
+            if (performance.now() - startedAt > 15_000) {
+              output.textContent = JSON.stringify({ error: `The ${scenario} app did not finish rendering.` });
+              resolve();
+              return;
+            }
+            setTimeout(waitForRender, 10);
+            return;
+          }
+          appWindow.requestAnimationFrame(() => {
+            const navigation = appWindow.performance.getEntriesByType("navigation")[0];
+            const firstContentfulPaint = appWindow.performance.getEntriesByName("first-contentful-paint")[0];
+            const resources = appWindow.performance.getEntriesByType("resource");
+            const heap = appWindow.performance.memory?.usedJSHeapSize ?? null;
+            output.textContent = JSON.stringify({
+              scenario,
+              appReadyMs: appWindow.performance.now(),
+              domContentLoadedMs: navigation.domContentLoadedEventEnd,
+              loadEventMs: navigation.loadEventEnd,
+              firstContentfulPaintMs: firstContentfulPaint?.startTime ?? null,
+              transferredBytes: resources.reduce((total, resource) => total + resource.transferSize, navigation.transferSize),
+              resourceCount: resources.length + 1,
+              usedJsHeapBytes: heap,
+              engineCardCount: appDocument.querySelectorAll(".engine-card").length,
+            });
+            resolve();
+          });
+        };
+        waitForRender();
+      });
+    </script>
+  </body>
+</html>
