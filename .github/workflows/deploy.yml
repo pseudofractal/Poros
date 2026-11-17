@@ -15,34 +15,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Rust Toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          targets: wasm32-unknown-unknown
+          node-version: 22
 
-      - name: Cache Cargo & Trunk
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.cargo/bin/
-            ~/.cargo/registry/index/
-            ~/.cargo/registry/cache/
-            ~/.cargo/git/db/
-            target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: Install Trunk
-        # checks if trunk is already in the cached bin, if not, installs it
-        run: |
-          if ! command -v trunk &> /dev/null; then
-              cargo install --locked trunk
-          fi
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
 
       - name: Build Release
-        # We dynamically set public-url to match the repository name.
-        # This overrides the hardcoded "/Poros" in Trunk.toml to ensure
-        # it works even if someone else forks the repo and renames it.
-        run: trunk build --release --public-url /${{ github.event.repository.name }}/
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4

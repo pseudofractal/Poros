@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-11-17T11:40:50.729Z",
+  "runtime": "v24.22.2",
+  "platform": "linux x64",
+  "cpu": "AMD Ryzen 9 5900HS with Radeon Graphics",
+  "chromium": "Chromium 157.0.8103.50",
+  "target": "local-loopback",
+  "productionMode": false,
+  "samplesPerPage": 7,
+  "browser": [
+    {
+      "scenario": "home",
+      "appReady": {
+        "median": 41.9,
+        "p95": 48.9,
+        "unit": "ms"
+      },
+      "firstPaint": {
+        "median": 33.9,
+        "p95": 40,
+        "unit": "ms"
+      },
+      "transferredBytes": {
+        "median": 18273,
+        "p95": 18273,
+        "unit": "bytes"
+      },
+      "resourceCount": 4,
+      "engineCardCount": 0,
+      "usedJsHeap": {
+        "median": 1343324,
+        "p95": 1343324,
+        "unit": "bytes"
+      }
+    },
+    {
+      "scenario": "settings",
+      "appReady": {
+        "median": 39.7,
+        "p95": 47.3,
+        "unit": "ms"
+      },
+      "firstPaint": {
+        "median": 22.3,
+        "p95": 25.5,
+        "unit": "ms"
+      },
+      "transferredBytes": {
+        "median": 47045,
+        "p95": 47045,
+        "unit": "bytes"
+      },
+      "resourceCount": 6,
+      "engineCardCount": 28,
+      "usedJsHeap": {
+        "median": 1457102,
+        "p95": 1457114,
+        "unit": "bytes"
+      }
+    }
+  ],
+  "resolver": [
+    {
+      "name": "default engine",
+      "median": 2.32,
+      "p95": 2.87,
+      "unit": "µs/search"
+    },
+    {
+      "name": "bang with three filters",
+      "median": 4.92,
+      "p95": 5.28,
+      "unit": "µs/search"
+    },
+    {
+      "name": "bang with skipped optional filter",
+      "median": 4.45,
+      "p95": 4.55,
+      "unit": "µs/search"
+    }
+  ],
+  "startupPayload": {
+    "home": {
+      "rawBytes": 17073,
+      "gzipBytes": 5283,
+      "brotliBytes": 4447
+    },
+    "settings": {
+      "rawBytes": 45245,
+      "gzipBytes": 12950,
+      "brotliBytes": 11087
+    }
+  }
+}

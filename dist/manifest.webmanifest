@@ -1,0 +1,13 @@
+{
+  "name": "Poros Search Launcher",
+  "short_name": "Poros",
+  "description": "A private personal search launcher.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1e1e2e",
+  "theme_color": "#1e1e2e",
+  "icons": [
+    { "src": "./static/logo.svg", "sizes": "any 192x192 512x512", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

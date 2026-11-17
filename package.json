@@ -1,0 +1,18 @@
+{
+  "name": "poros",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsc -p tsconfig.json --watch & node scripts/dev-server.mjs",
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.json && node scripts/copy-static.mjs",
+    "typecheck": "tsc --noEmit",
+    "bench": "npm run build && node scripts/bench.mjs",
+    "bench:baseline": "npm run build && node scripts/bench.mjs --update-baseline",
+    "bench:production": "npm run build && node scripts/bench.mjs --production",
+    "bench:production:baseline": "npm run build && node scripts/bench.mjs --production --update-baseline"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

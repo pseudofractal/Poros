@@ -1,19 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1e1e2e" />
     <title>Poros</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="static/logo.svg" />
-    <link data-trunk rel="copy-dir" href="static" />
-    <link
-      rel="search"
-      type="application/opensearchdescription+xml"
-      title="Poros"
-      href="static/opensearch.xml"
-    />
+    <link rel="icon" type="image/svg+xml" href="./static/logo.svg" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="search" type="application/opensearchdescription+xml" title="Poros" href="./static/opensearch.xml" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./assets/main.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <main id="app" class="app-shell" aria-live="polite"></main>
   </body>
 </html>
